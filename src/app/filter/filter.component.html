@@ -1,0 +1,52 @@
+  <div class="container">
+    <h3>Grocery</h3>
+    <ul>
+      <li>
+        <h4>Dried Beans, Grains & Rice</h4>
+        <ul>
+          <li class="item" *ngFor="let item of groceryItems" (click)="toggleCheckbox('Grocery', item)">
+            <input type="checkbox" [checked]="isSelected('Grocery', item)" class="hidden-checkbox">
+            <label [style.color]="isSelected('Grocery', item) ? 'blue' : 'black'">{{ item }}</label>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>EXPRESS DELIVERY</h4>
+        <ul>
+          <li class="common" *ngFor="let item of expressDeliveryItems" (click)="toggleCheckbox('Express Delivery', item)">
+            <input type="checkbox" [checked]="isSelected('Express Delivery', item)" > <img alt="test" width="140px" src="/assets/jumia_logo.png" />
+            <!-- <label [style.color]="isSelected('Express Delivery', item) ? 'blue' : 'black'">{{ item }}</label> -->
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>SHIPPED FROM</h4>
+        <ul>
+          <li class="common" *ngFor="let item of shippedFromItems" (click)="toggleCheckbox('Shipped From', item)">
+            <input type="checkbox" [checked]="isSelected('Shipped From', item)" >
+            <label [style.color]="isSelected('Shipped From', item) ? 'blue' : 'black'" [style.background-color]="item === 'Shipped from abroad' ? 'blue' : ''">
+              <span [style.background-color]="item === 'Shipped from abroad' ? 'blue' : ''" [style.color]="item === 'Shipped from abroad' ? 'white' : 'black'">{{ item }}</span>
+            </label>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h4>BRAND</h4>
+        <div class="scrollable-category">
+        <ul>
+          <li class="scrollable common" *ngFor="let item of brandItems" (click)="toggleCheckbox('Brand', item)">
+            <input type="checkbox" [checked]="isSelected('Brand', item)" >
+            <label [style.color]="isSelected('Brand', item) ? 'blue' : 'black'">{{ item }}</label>
+          </li>
+        </ul>
+    </div>
+      </li>
+      <div class="pricing">
+      <h4>PRICE  <span>(&#8358;)</span></h4>
+     
+      <li>
+        <button (click)="submitFilters()">APPLY</button>
+      </li>
+    </div>
+    </ul>
+  </div>  
